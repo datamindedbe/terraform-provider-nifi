@@ -36,7 +36,7 @@ func ResourceRemoteProcessGroup() *schema.Resource {
 							Type:     schema.TypeString,
 							Required: true,
 						},
-						"transportProtocol": {
+						"transport_protocol": {
 							Type:     schema.TypeString,
 							Optional: true,
 							Default:  "http",
@@ -177,8 +177,8 @@ func RemoteProcessGroupFromSchema(d *schema.ResourceData, processGroup *RemotePr
 	processGroup.Component.Position.X = position["x"].(float64)
 	processGroup.Component.Position.Y = position["y"].(float64)
 
-	processGroup.Component.TargetUris = component["targetUris"].(string)
-	processGroup.Component.TransportProtocol = component["transportProtocol"].(string)
+	processGroup.Component.TargetUris = component["target_uris"].(string)
+	processGroup.Component.TransportProtocol = component["transport_protocol"].(string)
 
 	return nil
 }
@@ -196,8 +196,8 @@ func RemoteProcessGroupToSchema(d *schema.ResourceData, processGroup *RemoteProc
 			"x": processGroup.Component.Position.X,
 			"y": processGroup.Component.Position.Y,
 		}},
-		"targetUris":        processGroup.Component.TargetUris,
-		"transportProtocol": processGroup.Component.TransportProtocol,
+		"target_uris":        processGroup.Component.TargetUris,
+		"transport_protocol": processGroup.Component.TransportProtocol,
 	}}
 	d.Set("component", component)
 
